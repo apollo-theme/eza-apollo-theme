@@ -12,11 +12,12 @@
 </p>
 
 <p align="center">
-  <a href="https://apollo-theme.github.io/#app-eza"><img src="https://raw.githubusercontent.com/apollo-theme/apollo-theme.github.io/main/previews/eza.svg" alt="Simulated eza Apollo Theme preview"></a>
+  <a href="https://apollo-theme.github.io/#app-eza"><img src="https://raw.githubusercontent.com/apollo-theme/apollo-theme.github.io/main/previews/eza.svg" alt="Simulated eza Apollo Dark preview"></a>
+  <a href="https://apollo-theme.github.io/#app-eza-light"><img src="https://raw.githubusercontent.com/apollo-theme/apollo-theme.github.io/main/previews/eza-light.svg" alt="Simulated eza Apollo Light preview"></a>
 </p>
 <p align="center"><em>Simulated preview. File metadata, terminal rendering, and color-variable overrides may vary.</em></p>
 
-Apollo ships as a standalone `theme.yml` for eza's current theme schema. It styles core file kinds, permissions, sizes, users, links, Git state, and metadata without replacing filename or extension mappings.
+Apollo ships Dark as the root `theme.yml` and Light as `light/theme.yml`, matching eza's fixed filename within whichever `EZA_CONFIG_DIR` you select. Both style core file kinds, permissions, sizes, users, links, Git state, and metadata without replacing filename or extension mappings.
 
 ## Install
 
@@ -28,19 +29,17 @@ git clone https://github.com/apollo-theme/eza-apollo-theme "$HOME/.config/eza-ap
 
 ## Activate
 
-Use Apollo once through an isolated config directory:
+Select the directory containing the variant's fixed `theme.yml`:
 
 ```sh
+# Dark (root theme.yml)
 EZA_CONFIG_DIR="$HOME/.config/eza-apollo-theme" eza --color=always -la
+
+# Light (light/theme.yml)
+EZA_CONFIG_DIR="$HOME/.config/eza-apollo-theme/light" eza --color=always -la
 ```
 
-Or opt in for the current shell:
-
-```sh
-export EZA_CONFIG_DIR="$HOME/.config/eza-apollo-theme"
-```
-
-No existing eza configuration or `LS_COLORS` value is modified. Existing `LS_COLORS`, `EZA_COLORS`, and `EXA_COLORS` keep eza's normal precedence and may intentionally override Apollo's file-kind colors.
+Export either directory to opt in for the current shell. Apollo Light styles eza output but cannot change the terminal itself, so use a light terminal canvas. No existing eza configuration or color variable is modified. Existing `LS_COLORS`, `EZA_COLORS`, and `EXA_COLORS` keep eza's normal precedence and may intentionally override either variant's file-kind colors.
 
 ## Uninstall
 
@@ -51,7 +50,7 @@ rm -rf "$HOME/.config/eza-apollo-theme"
 
 ## Visual check
 
-Run the activation command in a directory containing folders, executable files, symlinks, and ordinary files. Directories should be bold blue, executables bold green, symlinks cyan, and ordinary files warm beige. Existing `LS_COLORS` may intentionally override these file-kind colors.
+Run either activation command in a directory containing folders, executable files, symlinks, and ordinary files. File-kind roles should be distinct on the matching terminal canvas. Existing `LS_COLORS` or `EZA_COLORS` may intentionally override these colors.
 
 ## Development
 
@@ -63,7 +62,7 @@ python3 scripts/check.py
 python3 -m unittest discover -s tests -v
 ```
 
-`theme.yml` is deterministic generated output. Make mapping changes in `scripts/generate.py`, then regenerate rather than editing the theme directly.
+Root `theme.yml` and `light/theme.yml` are deterministic generated outputs. Make mapping changes in `scripts/generate.py`, then regenerate rather than editing either theme directly.
 
 ## License
 

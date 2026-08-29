@@ -1,8 +1,8 @@
 # eza Apollo theme development
 
-- `palette/apollo.json` is the exact canonical snapshot. Update the pinned SHA-256 in `scripts/generate.py` only when deliberately refreshing it.
-- Edit `scripts/generate.py`, not generated `theme.yml`.
-- Target eza's current `theme.yml` schema. Do not add filename/extension mappings or reset users' LS_COLORS behavior without an explicit requirement.
+- `palette/apollo.json` and `palette/apollo-light.json` are exact canonical snapshots. Update pinned SHA-256 values only when deliberately refreshing them.
+- Edit `scripts/generate.py`, not generated root `theme.yml` or `light/theme.yml`.
+- Target eza's current fixed `theme.yml` schema within the selected `EZA_CONFIG_DIR`. Do not add filename/extension mappings or reset users' LS_COLORS/EZA_COLORS behavior.
 - Generate: `python3 scripts/generate.py`
 - Check static coverage and isolated installed-eza behavior: `python3 scripts/check.py`
 - Test all: `python3 -m unittest discover -s tests -v`
