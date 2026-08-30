@@ -17,7 +17,7 @@
 </p>
 <p align="center"><em>Simulated preview. File metadata, terminal rendering, and color-variable overrides may vary.</em></p>
 
-Apollo ships Dark as the root `theme.yml` and Light as `light/theme.yml`, matching eza's fixed filename within whichever `EZA_CONFIG_DIR` you select. Both style core file kinds, permissions, sizes, users, links, Git state, and metadata without replacing filename or extension mappings.
+Apollo Dark preserves the root `theme.yml` and existing root configuration-directory selector for compatibility. Apollo Light is the explicit `light/theme.yml` companion. Both match eza's fixed filename within whichever `EZA_CONFIG_DIR` you select and style core file kinds, permissions, sizes, users, links, Git state, and metadata without replacing filename or extension mappings.
 
 ## Install
 
